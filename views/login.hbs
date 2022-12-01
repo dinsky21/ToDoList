@@ -3,39 +3,38 @@
   <form action='/users/login' method='post' class='col-10 mt-5 pt-5'>
     <h1 class='text-center'><a
         class='btn border-0 text-black fs-1'
-        href='#'
       >Login</a></h1>
     <div class='form-group mt-4'>
-      <label class='fs-4' for='exampleInputEmail1'>Email address</label>
+      <label class='fs-5' for='exampleInputEmail1'>Email address</label>
       <input
         type='email'
-        class='form-control mt-2'
+        class='form-control mt-2 ms-3'
         id='exampleInputEmail1'
         aria-describedby='emailHelp'
         placeholder='Enter email'
       />
-      <small id='emailHelp' class='form-text text-muted mt-1'>We'll never share
-        your email with anyone else.</small>
+
     </div>
     <div class='form-group mt-4'>
-      <label class='fs-4' for='exampleInputPassword1'>Password</label>
+      <label class='fs-5' for='exampleInputPassword1'>Password</label>
       <input
         type='password'
-        class='form-control mt-2'
+        class='form-control ms-3 mt-2'
         id='exampleInputPassword1'
         placeholder='Password'
       />
     </div>
-    <div class='form-group mt-4'>
-      <button type='submit' class='btn btn-primary fs-5 w-100'>Submit</button>
+    <div class='form-group mt-5'>
+      <button
+        type='submit'
+        class='btn btn-primary fs-5 ms-3 w-100'
+      >Submit</button>
     </div>
-    <div class='form-group mt-4'>
-      <span class='fs-5'>No account?
-        <a
+    <div class='lead mt-3'>
+      <span class='fs-6'>No account?<a
           href='/users/register'
-          class='btn border-0 text-danger fs-5'
+          class='btn border-0 text-danger fs-6 mb-1'
         >Register</a></span>
     </div>
   </form>
-
 </div>
