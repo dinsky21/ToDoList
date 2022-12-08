@@ -22,15 +22,38 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  const errors = []
+
+  if (!name || !email || !password || !confirmPassword) {
+    errors.push({ message: 'all columns are required' })
+  }
+  if (password !== confirmPassword) {
+    errors.push({ message: 'password is not the same' })
+  }
+  if (errors.length) {
+    return res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      confirmPassword,
+    })
+  }
+
   User.findOne({ email }).then((user) => {
     if (user) {
-      console.log('email already exists')
-      res.render('register', { name, email, password, confirmPassword })
-    } else {
-      User.create({ name, email, password })
-        .then(res.redirect('/'))
-        .catch((err) => console.log(err))
+      errors.push({ message: 'email already exists' })
+      return res.render('register', {
+        errors,
+        name,
+        email,
+        password,
+        confirmPassword,
+      })
     }
+    return User.create({ name, email, password })
+      .then(res.redirect('/'))
+      .catch((err) => console.log(err))
   })
 })
 
@@ -39,6 +62,7 @@ router.get('/logout', (req, res, next) => {
     if (err) {
       return next(err)
     }
+    req.flash('success_msg', 'You have logged out')
     res.redirect('/users/login')
   })
 })
